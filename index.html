@@ -1,3 +1,142 @@
 <html>
- <body>Hello</body>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Open+Sans:wght@300&family=Roboto:wght@100;300&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<div id="about">
+    <div id="navbar"></div>
+    <span id="welcome-note"></span>
+    <div id="description">
+        I am a frontend developer from Poland with 4+ years of experience. My daily stack is javascript and vue. If you want to know me better, just check my linkedin profile.
+    </div>
+</div>
+</body>
+
+<script>
+    window.onload = async () => {
+
+        const textElement = document.querySelector('#welcome-note')
+        const textAnimations = async () => {
+            const writingText = 'My name is Mikołaj.'
+                .split('')
+
+            const animationTime = 100
+            const animationSpeedUpOnLetter = 10
+            const refs = []
+
+            for (let letter of writingText) {
+                await new Promise((resolve) => {
+                    const _timeout = setTimeout(() => {
+                        resolve()
+
+                        clearTimeout(_timeout)
+                    }, animationTime)
+                })
+
+                const span = document.createElement('span')
+
+                span.innerHTML += letter
+
+                textElement.appendChild(span)
+                refs.push(span)
+            }
+
+            let index = 0
+            for (const ref of refs.reverse()) {
+                await new Promise((resolve) => {
+                    let _animationSpeed = animationTime
+
+                    if (index > animationSpeedUpOnLetter) _animationSpeed = animationTime / 2
+                    if (index > (animationSpeedUpOnLetter * 2)) _animationSpeed = animationTime / 3
+
+                    const _timeout = setTimeout(() => {
+                        resolve()
+
+                        clearTimeout(_timeout)
+                    }, Math.round(_animationSpeed))
+                })
+
+                // Infinite animation effect
+                // textElement.removeChild(ref)
+                index += 1
+                const cursor = document.querySelector('#welcome-note');
+                cursor.classList.add('hidden-cursor')
+            }
+            // Infinite animation effect
+            // textAnimations()
+        }
+        textAnimations()
+    }
+</script>
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #1d1d20;
+
+        color: white;
+
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    #navbar {
+        height: 50px;
+        margin-bottom: 64px;
+    }
+
+    #about {
+        width: 1000px;
+        height: 100%;
+    }
+
+    #welcome-note {
+        font-size: 48px;
+        margin-top: 8px;
+    }
+
+    #description {
+        margin-top: 96px;
+        font-size: 28px;
+
+        border-left: 4px solid #F1C40F;
+        padding-left: 16px;
+    }
+
+    #welcome-note::before {
+        content: 'Welcome, ';
+    }
+
+    #welcome-note::after {
+        content: '';
+        display: inline;
+        padding-left: 8px;
+
+        animation: 1s cursor-animation infinite;
+    }
+
+    .hidden-cursor::after {
+        display: none !important;
+    }
+
+    @keyframes cursor-animation {
+        from {
+            border-right: 16px solid #F1C40F;
+        }
+        to {
+            border-right: 16px solid #1d1d20;
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        #about {
+            width: 100% !important;
+            padding: 40px;
+        }
+    }
+</style>
 </html>
