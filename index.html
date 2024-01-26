@@ -1,4 +1,5 @@
-<html lang="pl">
+<!doctype html>
+<html lang="en">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -7,22 +8,26 @@
           rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
-    <title>Mikołaj Sojka - front-end developer</title>
+    <title>Mikołaj Sojka front-end developer</title>
     <meta name="author" content="Mikołaj Sojka">
     <link rel="icon" href="me.jpg" type="image/jpg">
 
     <!--    <meta name="viewport" content="width=device-width, initial-scale=0.5">-->
     <meta charset="UTF-8">
+    <meta property="og:image" content="me.jpg" />
 </head>
 <body>
 <div id="about">
     <div id="navbar">
-        <img src="linkedin.png" onclick="openLinkedin()">
+        <a href="https://www.linkedin.com/in/miko%C5%82aj-sojka-7b4680a0" target="_blank">
+            <img src="linkedin.png">
+        </a>
     </div>
-    <span id="welcome-note"></span>
+    <span id="welcome-note">
+        <br>
+    </span>
     <div id="description">
-        I am a front-end developer from Poland with 4+ years of experience. In general, my daily stack is Javascript
-        with Vue. <br><br>If you want to know me better, check my profile.
+        I am a front-end developer from Poland with 4+ years of experience. I am developing web applications based on Javascript frameworks such as Vue and React. <br><br>If you want to know me better, check my profile.
     </div>
 </div>
 </body>
@@ -141,8 +146,9 @@
         font-size: 24px;
         line-height: 1.5;
 
-        border-left: 4px solid #F1C40F;
-        padding-left: 16px;
+        border-left: 8px solid;
+        border-image: linear-gradient(white, #F1C40F) 1 100%;
+        padding-left: 32px;
     }
 
     #welcome-note::before {
@@ -153,6 +159,8 @@
         content: '';
         display: inline;
         padding-left: 8px;
+
+        border-right: 16px solid;
 
         animation: 1s cursor-animation infinite;
     }
@@ -172,10 +180,10 @@
 
     @keyframes cursor-animation {
         from {
-            border-right: 16px solid #F1C40F;
+            border-color: #F1C40F;
         }
         to {
-            border-right: 16px solid #1d1d20;
+            border-color: #1d1d20;
         }
     }
 
