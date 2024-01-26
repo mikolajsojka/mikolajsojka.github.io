@@ -1,21 +1,38 @@
-<html>
+<html lang="pl">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Open+Sans:wght@300&family=Roboto:wght@100;300&display=swap"
           rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+    <title>Mikołaj Sojka - front-end developer</title>
+    <meta name="author" content="Mikołaj Sojka">
+    <link rel="icon" href="me.jpg" type="image/jpg">
+
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=0.5">-->
+    <meta charset="UTF-8">
 </head>
 <body>
 <div id="about">
-    <div id="navbar"></div>
+    <div id="navbar">
+        <img src="linkedin.png" onclick="openLinkedin()">
+    </div>
     <span id="welcome-note"></span>
     <div id="description">
-        I am a frontend developer from Poland with 4+ years of experience. My daily stack is javascript and vue. If you want to know me better, just check my linkedin profile.
+        I am a front-end developer from Poland with 4+ years of experience. In general, my daily stack is Javascript
+        with Vue. <br><br>If you want to know me better, just check my profile.
     </div>
 </div>
 </body>
 
 <script>
+
+    const openLinkedin = () => {
+        window.open('https://www.linkedin.com/in/miko%C5%82aj-sojka-7b4680a0', '_blank')
+    }
+
     window.onload = async () => {
 
         const textElement = document.querySelector('#welcome-note')
@@ -76,7 +93,6 @@
     body {
         display: flex;
         justify-content: center;
-        align-items: center;
         background: #1d1d20;
 
         color: white;
@@ -85,8 +101,24 @@
     }
 
     #navbar {
-        height: 50px;
-        margin-bottom: 64px;
+        margin-bottom: 40px;
+        padding-top: 32px;
+
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    img {
+        height: 70px;
+        cursor: pointer;
+
+        animation: shake-animation 0.75s 5s 1 normal;
+        animation-delay: 5s;
+    }
+
+    img:hover {
+        animation-play-state: paused;
+        opacity: 0.8;
     }
 
     #about {
@@ -95,13 +127,19 @@
     }
 
     #welcome-note {
-        font-size: 48px;
         margin-top: 8px;
+
+        font-family: 'Lato', sans-serif;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: 0;
     }
 
     #description {
         margin-top: 96px;
-        font-size: 28px;
+        font-size: 24px;
+        line-height: 1.5;
 
         border-left: 4px solid #F1C40F;
         padding-left: 16px;
@@ -123,6 +161,15 @@
         display: none !important;
     }
 
+    @keyframes shake-animation {
+        25%, 75% {
+            transform: translateY(5px) rotateZ(10deg);
+        }
+        0%, 50%, 100% {
+            transform: rotateZ(0);
+        }
+    }
+
     @keyframes cursor-animation {
         from {
             border-right: 16px solid #F1C40F;
@@ -133,10 +180,25 @@
     }
 
     @media screen and (max-width: 992px) {
+        #navbar {
+            margin-bottom: 96px;
+        }
+
+        #welcome-note {
+            font-size: 64px;
+        }
+
         #about {
-            width: 100% !important;
+            width: 100%;
             padding: 40px;
+            font-size: 32px;
+        }
+
+        img {
+            height: 100px;
         }
     }
 </style>
+
+<!-- ©2024 Mikołaj Sojka -->
 </html>
